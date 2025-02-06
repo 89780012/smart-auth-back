@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<biz>
+  <id>rolec4d7-de47-4160-a1e5-ba2affc20af3</id>
+  <name>角色导出</name>
+  <url>/api/role/exportRole</url>
+  <protocol>application/json</protocol>
+  <method>POST</method>
+  <params>
+    <param>
+      <name>username</name>
+      <type>0</type>
+      <required>0</required>
+    </param>
+    <param>
+      <name>email</name>
+      <type>0</type>
+      <required>0</required>
+    </param>
+    <param>
+      <name>phone</name>
+      <type>0</type>
+      <required>0</required>
+    </param>
+    <param>
+      <name>wechatId</name>
+      <type>0</type>
+      <required>0</required>
+    </param>
+    <param>
+      <name>startTime</name>
+      <type>0</type>
+      <required>0</required>
+      <defaultValue>2025-01-30 23:44:14</defaultValue>
+    </param>
+    <param>
+      <name>endTime</name>
+      <type>0</type>
+      <required>0</required>
+      <defaultValue>2025-01-31 23:39:18</defaultValue>
+    </param>
+  </params>
+  <results>
+    <responseStruct>1</responseStruct>
+    <result>
+      <name>download_url</name>
+      <type>0</type>
+      <description/>
+      <example/>
+    </result>
+  </results>
+  <flows>
+    <component>
+      <id>137ae459-554a-4b43-8c9a-0a7336fcabe8</id>
+      <type>flow-start</type>
+      <name>开始</name>
+      <x>84</x>
+      <y>268</y>
+      <property>
+        <operationType>QUERY</operationType>
+      </property>
+    </component>
+    <component>
+      <id>d8e7fc10-988a-4d66-ab47-7f0cc6e8d822</id>
+      <type>flow-end</type>
+      <name>结束</name>
+      <x>780</x>
+      <y>267</y>
+      <property>
+        <operationType>QUERY</operationType>
+      </property>
+    </component>
+    <component>
+      <id>d3d628b8-82c1-4d36-895f-523b1631f06e</id>
+      <type>flow-sql</type>
+      <name>查询数据</name>
+      <x>412</x>
+      <y>270</y>
+      <property>
+        <sql>&lt;![CDATA[SELECT 
+    r.role_code AS roleCode, 
+    r.role_name AS roleName, 
+    r.description, 
+    CASE 
+        WHEN is_active = 0 THEN '禁止'
+        WHEN is_active = 1 THEN '启用'
+        ELSE '未知'
+    END AS status,
+    r.created_at AS createdAt, 
+    r.updated_at AS updatedAt
+FROM roles r
+WHERE 1=1
+&lt;if test='roleName != null and roleName != ""'&gt;
+    AND r.role_name LIKE concat('%', #{roleName}, '%')
+&lt;/if&gt;
+&lt;if test='isActive != null'&gt;
+    AND r.is_active = #{isActive}
+&lt;/if&gt;
+&lt;if test='startTime != null and endTime != null'&gt;
+    AND r.created_at BETWEEN #{startTime} AND #{endTime}
+&lt;/if&gt;]]&gt;</sql>
+        <returnType>0</returnType>
+        <dataSourceKey>default</dataSourceKey>
+        <paginationType>NO</paginationType>
+        <operationType>QUERY</operationType>
+        <bindKey>dataList</bindKey>
+      </property>
+    </component>
+    <component>
+      <id>aa40f256-27b1-4a73-8d0a-c70f540510f6</id>
+      <type>flow-custom-refer</type>
+      <name>导入本地并返回url</name>
+      <x>584</x>
+      <y>267</y>
+      <property>
+        <beanRef>roleExport</beanRef>
+        <method>fun.smartflow.bizs.users.RoleExport#handler</method>
+        <threadType>0</threadType>
+        <operationType>QUERY</operationType>
+        <params>
+          <param>
+            <seq>1</seq>
+            <dataType>0</dataType>
+            <val>domain</val>
+          </param>
+          <param>
+            <seq>2</seq>
+            <dataType>8</dataType>
+            <val>dataList</val>
+          </param>
+        </params>
+      </property>
+    </component>
+    <component>
+      <id>65be5c45-42f4-48df-882d-6cd9b391da16</id>
+      <type>flow-sys_config</type>
+      <name>文件访问domain</name>
+      <x>248</x>
+      <y>269</y>
+      <property>
+        <beanRef>flow-sysConfigUtil</beanRef>
+        <method>cc.xiaonuo.flow.method.SysConfigUtils#exec</method>
+        <operationType>QUERY</operationType>
+        <params>
+          <param>
+            <seq>1</seq>
+            <dataType>0</dataType>
+            <val>file.domain</val>
+          </param>
+          <param>
+            <seq>2</seq>
+            <dataType>0</dataType>
+            <val>domain</val>
+          </param>
+        </params>
+      </property>
+    </component>
+    <connection>
+      <id>8e535e6a-fb38-4ca8-be5c-a26555dec664</id>
+      <from>137ae459-554a-4b43-8c9a-0a7336fcabe8</from>
+      <to>65be5c45-42f4-48df-882d-6cd9b391da16</to>
+      <startX>174</startX>
+      <startY>303</startY>
+      <endX>248</endX>
+      <endY>304</endY>
+      <controlX>342</controlX>
+      <controlY>303</controlY>
+      <label/>
+    </connection>
+    <connection>
+      <id>5550ea00-5962-49c3-a0df-26be1577cd89</id>
+      <from>d3d628b8-82c1-4d36-895f-523b1631f06e</from>
+      <to>aa40f256-27b1-4a73-8d0a-c70f540510f6</to>
+      <startX>502</startX>
+      <startY>305</startY>
+      <endX>584</endX>
+      <endY>302</endY>
+      <controlX>515</controlX>
+      <controlY>306</controlY>
+      <label/>
+    </connection>
+    <connection>
+      <id>8f6da34a-5088-42f4-b26f-53c07d61dd60</id>
+      <from>aa40f256-27b1-4a73-8d0a-c70f540510f6</from>
+      <to>d8e7fc10-988a-4d66-ab47-7f0cc6e8d822</to>
+      <startX>674</startX>
+      <startY>302</startY>
+      <endX>780</endX>
+      <endY>302</endY>
+      <controlX>727</controlX>
+      <controlY>305</controlY>
+      <label/>
+    </connection>
+    <connection>
+      <id>e2fa2795-9c5b-476e-9dbe-69ca1a241530</id>
+      <from>65be5c45-42f4-48df-882d-6cd9b391da16</from>
+      <to>d3d628b8-82c1-4d36-895f-523b1631f06e</to>
+      <startX>338</startX>
+      <startY>304</startY>
+      <endX>412</endX>
+      <endY>305</endY>
+      <controlX>361</controlX>
+      <controlY>306</controlY>
+      <label/>
+    </connection>
+  </flows>
+</biz>
