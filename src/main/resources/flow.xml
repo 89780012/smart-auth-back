@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<smart-flow>
+    <!-- 全局配置 -->
+    <settings>
+        <!-- 雪花算法机房ID、工作机器id -->
+        <property name="unique_roomid">1</property>
+        <property name="unique_workid">1</property>
+        <!-- 分页变量使用，若与项目定义key不同，则替换标签内key -->
+        <property name="sql_currentPage">currentPage</property>
+        <property name="sql_pageNo">pageNo</property>
+        <property name="sql_pageSize">pageSize</property>
+        <property name="sql_total">total</property>
+        <property name="sql_records">records</property>
+        <property name="sql_pages">pages</property>
+    </settings>
+
+    <!-- 数据源配置 -->
+    <dataSources>
+        <!-- 默认数据源配置 -->
+        <dataSource id="default" type="mysql">
+            <property name="driverClassName">com.mysql.cj.jdbc.Driver</property>
+            <property name="url">jdbc:mysql://47.83.231.206:3306/smart-auth-back?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=Asia/Shanghai</property>
+            <property name="username">smart-auth-back</property>
+            <property name="password">aRxmwXD5trH7BMKA</property>
+        </dataSource>
+    </dataSources>
+</smart-flow>

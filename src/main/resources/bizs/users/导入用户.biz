@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<biz>
+  <id>0e7ec4d7-de47-4160-a1e5-ba2affc20af2</id>
+  <name>导入用户</name>
+  <url>/api/user/importUser</url>
+  <protocol>multipart/form-data</protocol>
+  <method>POST</method>
+  <params/>
+  <results>
+    <responseStruct>1</responseStruct>
+  </results>
+  <flows>
+    <component>
+      <id>137ae459-554a-4b43-8c9a-0a7336fcabe8</id>
+      <type>flow-start</type>
+      <name>开始</name>
+      <x>127</x>
+      <y>267</y>
+      <property>
+        <operationType>QUERY</operationType>
+      </property>
+    </component>
+    <component>
+      <id>d8e7fc10-988a-4d66-ab47-7f0cc6e8d822</id>
+      <type>flow-end</type>
+      <name>结束</name>
+      <x>767</x>
+      <y>262</y>
+      <property>
+        <operationType>QUERY</operationType>
+      </property>
+    </component>
+    <component>
+      <id>fa34985c-560d-4939-8bd7-79131d1f8c3b</id>
+      <type>custom-csv</type>
+      <name>csv处理器</name>
+      <x>306</x>
+      <y>268</y>
+      <property>
+        <beanRef>csvHandler</beanRef>
+        <method>fun.smartflow.handler.CSVHandler#handler</method>
+        <threadType>0</threadType>
+        <operationType>QUERY</operationType>
+        <params>
+          <param>
+            <seq>1</seq>
+            <val>fileKey|file|表单中文件key</val>
+          </param>
+          <param>
+            <seq>2</seq>
+            <val>bindKey|dataList|数据绑定key</val>
+          </param>
+        </params>
+      </property>
+    </component>
+    <component>
+      <id>61e23887-fc14-49bc-a210-308ed4e45527</id>
+      <type>flow-sql</type>
+      <name>插入用户</name>
+      <x>601</x>
+      <y>263</y>
+      <property>
+        <sql>&lt;![CDATA[
+INSERT INTO users(username, password_hash, email, phone)
+VALUES
+&lt;foreach collection="dataList" item="user" index="index" open="(" separator="), (" close=")"&gt;
+    #{user.username}, #{user.password}, #{user.email}, #{user.phone}
+&lt;/foreach&gt;]]&gt;</sql>
+        <returnType>0</returnType>
+        <dataSourceKey>default</dataSourceKey>
+        <paginationType>NO</paginationType>
+        <operationType>INSERT</operationType>
+        <bindKey>num</bindKey>
+      </property>
+    </component>
+    <component>
+      <id>f3e2a76d-bea8-4c31-b7fc-f4db8c503f35</id>
+      <type>flow-groovy</type>
+      <name>用户数据清洗</name>
+      <x>458</x>
+      <y>267</y>
+      <property>
+        <operationType>QUERY</operationType>
+        <script>&lt;![CDATA[def dataList = $vars.get("dataList") // 获取原始数据列表
+
+// 通过列表解析创建一个新的 List&lt;Map&gt; 对象
+def resultList = dataList.collect { entry -&gt;
+    // 将每个 entry 转换为一个包含 username, password, phone, email 的 Map
+    [
+        username: entry[0],
+        password: entry[1],
+        email: entry[2],
+        phone: entry[3]
+    ]
+}
+// 打印 resultList 到控制台
+println "Processed Data List: $resultList"
+// 将新列表存储回 vars 上下文中
+$vars.put("dataList", resultList)
+]]&gt;</script>
+      </property>
+    </component>
+    <connection>
+      <id>1838b572-c97f-4f5a-9485-3aeb73eeb363</id>
+      <from>137ae459-554a-4b43-8c9a-0a7336fcabe8</from>
+      <to>fa34985c-560d-4939-8bd7-79131d1f8c3b</to>
+      <startX>217</startX>
+      <startY>302</startY>
+      <endX>306</endX>
+      <endY>303</endY>
+      <controlX>340</controlX>
+      <controlY>304</controlY>
+      <label/>
+    </connection>
+    <connection>
+      <id>781e6c56-baee-4ca5-9851-33716839c7f7</id>
+      <from>fa34985c-560d-4939-8bd7-79131d1f8c3b</from>
+      <to>f3e2a76d-bea8-4c31-b7fc-f4db8c503f35</to>
+      <startX>396</startX>
+      <startY>303</startY>
+      <endX>458</endX>
+      <endY>302</endY>
+      <controlX>597</controlX>
+      <controlY>301</controlY>
+      <label/>
+    </connection>
+    <connection>
+      <id>29dfe412-5d65-4b00-be7e-3f057aa562b0</id>
+      <from>61e23887-fc14-49bc-a210-308ed4e45527</from>
+      <to>d8e7fc10-988a-4d66-ab47-7f0cc6e8d822</to>
+      <startX>691</startX>
+      <startY>298</startY>
+      <endX>767</endX>
+      <endY>297</endY>
+      <controlX>818</controlX>
+      <controlY>302</controlY>
+      <label/>
+    </connection>
+    <connection>
+      <id>bbd67946-af42-4426-9071-55bb5b67a965</id>
+      <from>f3e2a76d-bea8-4c31-b7fc-f4db8c503f35</from>
+      <to>61e23887-fc14-49bc-a210-308ed4e45527</to>
+      <startX>548</startX>
+      <startY>301</startY>
+      <endX>601</endX>
+      <endY>299</endY>
+      <controlX>565</controlX>
+      <controlY>300</controlY>
+      <label/>
+    </connection>
+  </flows>
+</biz>

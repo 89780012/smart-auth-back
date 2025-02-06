@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<biz>
+  <id>resourced7-de47-4160-a1e5-ba2affc2123</id>
+  <name>资源列表</name>
+  <url>/api/resources/list</url>
+  <protocol>application/x-www-form-urlencoded</protocol>
+  <method>GET</method>
+  <params/>
+  <results>
+    <responseStruct>1</responseStruct>
+    <result>
+      <name>list</name>
+      <type>8</type>
+      <stepType>0</stepType>
+      <description/>
+      <example/>
+    </result>
+  </results>
+  <flows>
+    <component>
+      <id>137ae459-554a-4b43-8c9a-0a7336fcabe8</id>
+      <type>flow-start</type>
+      <name>开始</name>
+      <x>121</x>
+      <y>271</y>
+      <property>
+        <operationType>QUERY</operationType>
+      </property>
+    </component>
+    <component>
+      <id>d8e7fc10-988a-4d66-ab47-7f0cc6e8d822</id>
+      <type>flow-end</type>
+      <name>结束</name>
+      <x>799</x>
+      <y>267</y>
+      <property>
+        <operationType>QUERY</operationType>
+      </property>
+    </component>
+    <component>
+      <id>d3d628b8-82c1-4d36-895f-523b1631f06e</id>
+      <type>flow-sql</type>
+      <name>查询资源</name>
+      <x>464</x>
+      <y>272</y>
+      <property>
+        <sql>&lt;![CDATA[select resource_id as resourceId,
+    resource_code as resourceCode,
+    resource_name as resourceName,
+    resource_type as resourceType,
+    parent_id as parentId,
+    path,
+    component,
+    icon,layout,
+    sort_order as sortOrder,
+    hidden,
+    redirect,
+    created_at as createdAt,
+    updated_at as updatedAt
+from resources
+    ]]&gt;</sql>
+        <returnType>0</returnType>
+        <dataSourceKey>default</dataSourceKey>
+        <paginationType>NO</paginationType>
+        <operationType>QUERY</operationType>
+        <bindKey>list</bindKey>
+      </property>
+    </component>
+    <connection>
+      <id>8e535e6a-fb38-4ca8-be5c-a26555dec664</id>
+      <from>137ae459-554a-4b43-8c9a-0a7336fcabe8</from>
+      <to>d3d628b8-82c1-4d36-895f-523b1631f06e</to>
+      <startX>211</startX>
+      <startY>306</startY>
+      <endX>464</endX>
+      <endY>307</endY>
+      <controlX>342</controlX>
+      <controlY>303</controlY>
+      <label/>
+    </connection>
+    <connection>
+      <id>8f4c3978-91a3-4bae-9296-899a0aabcf2a</id>
+      <from>d3d628b8-82c1-4d36-895f-523b1631f06e</from>
+      <to>d8e7fc10-988a-4d66-ab47-7f0cc6e8d822</to>
+      <startX>554</startX>
+      <startY>307</startY>
+      <endX>799</endX>
+      <endY>302</endY>
+      <controlX>654</controlX>
+      <controlY>306</controlY>
+      <label/>
+    </connection>
+  </flows>
+</biz>

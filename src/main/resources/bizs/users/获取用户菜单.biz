@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<biz>
+  <id>41b816c7-f0e4-4106-8362-fcafc48b22e8</id>
+  <name>获取用户菜单</name>
+  <url>/api/user/getUserMenu</url>
+  <protocol>application/json</protocol>
+  <method>POST</method>
+  <params>
+    <param>
+      <name>userId</name>
+      <type>1</type>
+      <required>1</required>
+    </param>
+  </params>
+  <results>
+    <responseStruct>1</responseStruct>
+    <result>
+      <name>list</name>
+      <type>7</type>
+      <stepType>1</stepType>
+      <description/>
+      <example/>
+    </result>
+  </results>
+  <flows>
+    <component>
+      <id>c39e80d0-c09b-4118-8fdc-d2a016598560</id>
+      <type>flow-start</type>
+      <name>开始</name>
+      <x>86</x>
+      <y>351</y>
+      <property>
+        <operationType>QUERY</operationType>
+      </property>
+    </component>
+    <component>
+      <id>3f5654ec-b91c-48ca-a3a5-a78105b71e64</id>
+      <type>flow-end</type>
+      <name>结束</name>
+      <x>619</x>
+      <y>353</y>
+      <property>
+        <operationType>QUERY</operationType>
+      </property>
+    </component>
+    <component>
+      <id>ab27bb98-3ff1-4901-85bb-869dc32bfbfe</id>
+      <type>flow-sql</type>
+      <name>获取用户菜单</name>
+      <x>359</x>
+      <y>354</y>
+      <property>
+        <sql>&lt;![CDATA[SELECT 
+    r.resource_id as resourceId,
+    r.resource_name as resourceName,
+    r.resource_type as resourceType,
+    r.parent_id as parentId,
+    r.path,
+    r.component,
+    r.icon,
+    r.layout,
+    r.sort_order,
+    r.hidden,
+    r.redirect,
+    r.is_active as isActive,
+    r.created_at as createdAt,
+    r.updated_at as updatedAt
+FROM 
+    resources r
+JOIN 
+    permission_resources pr ON r.resource_id = pr.resource_id
+JOIN 
+    permissions p ON pr.permission_id = p.permission_id
+JOIN 
+    role_permissions rp ON p.permission_id = rp.permission_id
+JOIN 
+    user_roles ur ON rp.role_id = ur.role_id
+WHERE 
+    ur.user_id = #{userId} AND r.is_active = 1 AND p.is_active = 1 AND r.hidden = 0
+ORDER BY 
+    r.sort_order;]]&gt;</sql>
+        <returnType>0</returnType>
+        <dataSourceKey>default</dataSourceKey>
+        <paginationType>NO</paginationType>
+        <operationType>QUERY</operationType>
+        <bindKey>list</bindKey>
+      </property>
+    </component>
+    <connection>
+      <id>ad54d903-997c-480a-8586-5b506954c926</id>
+      <from>c39e80d0-c09b-4118-8fdc-d2a016598560</from>
+      <to>ab27bb98-3ff1-4901-85bb-869dc32bfbfe</to>
+      <startX>176</startX>
+      <startY>386</startY>
+      <endX>359</endX>
+      <endY>389</endY>
+      <controlX>268</controlX>
+      <controlY>387</controlY>
+      <label/>
+    </connection>
+    <connection>
+      <id>95dcaf64-7abf-4de2-a89a-4463c10a7936</id>
+      <from>ab27bb98-3ff1-4901-85bb-869dc32bfbfe</from>
+      <to>3f5654ec-b91c-48ca-a3a5-a78105b71e64</to>
+      <startX>449</startX>
+      <startY>389</startY>
+      <endX>619</endX>
+      <endY>388</endY>
+      <controlX>534</controlX>
+      <controlY>388</controlY>
+      <label/>
+    </connection>
+  </flows>
+</biz>
