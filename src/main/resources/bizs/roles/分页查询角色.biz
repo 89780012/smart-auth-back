@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<biz>
+  <id>rolec4d7-de47-4160-a1e5-ba2affc20af7</id>
+  <name>分页查询角色</name>
+  <url>/api/role/pageList</url>
+  <protocol>application/json</protocol>
+  <method>POST</method>
+  <params>
+    <param>
+      <name>roleCode</name>
+      <type>0</type>
+      <required>0</required>
+    </param>
+    <param>
+      <name>roleName</name>
+      <type>0</type>
+      <required>0</required>
+    </param>
+    <param>
+      <name>description</name>
+      <type>0</type>
+      <required>0</required>
+    </param>
+    <param>
+      <name>isActive</name>
+      <type>0</type>
+      <required>0</required>
+      <description>1: 启用 0: 禁用</description>
+    </param>
+    <param>
+      <name>orderBy</name>
+      <type>0</type>
+      <required>0</required>
+    </param>
+    <param>
+      <name>orderType</name>
+      <type>0</type>
+      <required>0</required>
+    </param>
+  </params>
+  <results>
+    <responseStruct>1</responseStruct>
+    <result>
+      <name>roleList</name>
+      <type>8</type>
+      <stepType>0</stepType>
+      <description/>
+      <example/>
+    </result>
+  </results>
+  <flows>
+    <component>
+      <id>137ae459-554a-4b43-8c9a-0a7336fcabe8</id>
+      <type>flow-start</type>
+      <name>开始</name>
+      <x>139</x>
+      <y>271</y>
+      <property>
+        <operationType>QUERY</operationType>
+      </property>
+    </component>
+    <component>
+      <id>d8e7fc10-988a-4d66-ab47-7f0cc6e8d822</id>
+      <type>flow-end</type>
+      <name>结束</name>
+      <x>757</x>
+      <y>273</y>
+      <property>
+        <operationType>QUERY</operationType>
+      </property>
+    </component>
+    <component>
+      <id>d3d628b8-82c1-4d36-895f-523b1631f06e</id>
+      <type>flow-sql</type>
+      <name>分页查询数据</name>
+      <x>463</x>
+      <y>270</y>
+      <property>
+        <sql>&lt;![CDATA[SELECT 
+    role_id as roleId,
+    role_code as roleCode,
+    role_name as roleName,
+    description,
+    created_at as createdAt,
+    updated_at as updatedAt,
+    is_active as isActive
+FROM roles
+WHERE 1=1
+&lt;if test='roleCode != null and roleCode != ""'&gt;
+    AND role_code LIKE concat('%', #{roleCode}, '%')
+&lt;/if&gt;
+&lt;if test='roleName != null and roleName != ""'&gt;
+    AND role_name LIKE concat('%', #{roleName}, '%')
+&lt;/if&gt;
+&lt;if test='description != null and description != ""'&gt;
+    AND description LIKE concat('%', #{description}, '%')
+&lt;/if&gt;
+&lt;if test='isActive != null'&gt;
+    AND is_active = ${isActive}
+&lt;/if&gt;
+&lt;if test='startTime != null and endTime != null'&gt;
+    AND created_at BETWEEN #{startTime} AND #{endTime}
+&lt;/if&gt;
+&lt;if test='orderBy != null and orderBy != "" and orderType != null and orderType != ""'&gt;
+    order by ${orderBy} ${orderType}
+&lt;/if&gt;
+]]&gt;</sql>
+        <returnType>0</returnType>
+        <dataSourceKey>default</dataSourceKey>
+        <paginationType>YES</paginationType>
+        <operationType>QUERY</operationType>
+        <bindKey>roleList</bindKey>
+      </property>
+    </component>
+    <connection>
+      <id>8e535e6a-fb38-4ca8-be5c-a26555dec664</id>
+      <from>137ae459-554a-4b43-8c9a-0a7336fcabe8</from>
+      <to>d3d628b8-82c1-4d36-895f-523b1631f06e</to>
+      <startX>229</startX>
+      <startY>306</startY>
+      <endX>463</endX>
+      <endY>305</endY>
+      <controlX>342</controlX>
+      <controlY>303</controlY>
+      <label/>
+    </connection>
+    <connection>
+      <id>8f4c3978-91a3-4bae-9296-899a0aabcf2a</id>
+      <from>d3d628b8-82c1-4d36-895f-523b1631f06e</from>
+      <to>d8e7fc10-988a-4d66-ab47-7f0cc6e8d822</to>
+      <startX>553</startX>
+      <startY>305</startY>
+      <endX>757</endX>
+      <endY>308</endY>
+      <controlX>654</controlX>
+      <controlY>306</controlY>
+      <label/>
+    </connection>
+  </flows>
+</biz>

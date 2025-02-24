@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<biz>
+  <id>bbb45ec2-22b1-4d50-96b5-6be895e1a741</id>
+  <name>获取角色全权限</name>
+  <url>/api/role/getRolePermissions</url>
+  <protocol>application/json</protocol>
+  <method>POST</method>
+  <params>
+    <param>
+      <name>roleId</name>
+      <type>1</type>
+      <required>1</required>
+      <defaultValue/>
+      <description/>
+    </param>
+  </params>
+  <results>
+    <responseStruct>1</responseStruct>
+    <result>
+      <name>permissionIds</name>
+      <type>7</type>
+      <stepType>0</stepType>
+      <description/>
+      <example/>
+    </result>
+  </results>
+  <flows>
+    <component>
+      <id>9e838428-4db7-44ee-bc1b-4833934ebccb</id>
+      <type>flow-start</type>
+      <name>开始</name>
+      <x>143</x>
+      <y>281</y>
+      <property>
+        <operationType>QUERY</operationType>
+      </property>
+    </component>
+    <component>
+      <id>75067b3a-bb3b-4b48-9d59-e10ebbed54d4</id>
+      <type>flow-end</type>
+      <name>结束</name>
+      <x>696</x>
+      <y>284</y>
+      <property>
+        <operationType>QUERY</operationType>
+      </property>
+    </component>
+    <component>
+      <id>f7350d59-9b7e-4963-a0fe-cfe0d5ea2ff9</id>
+      <type>flow-sql</type>
+      <name>获取角色权限</name>
+      <x>426</x>
+      <y>282</y>
+      <property>
+        <sql>&lt;![CDATA[ SELECT p.permission_id as permissionId
+FROM roles r 
+JOIN role_permissions rp ON r.role_id = rp.role_id 
+JOIN permissions p ON rp.permission_id = p.permission_id 
+WHERE r.is_active = 1 AND p.is_active = 1]]&gt;</sql>
+        <returnType>7</returnType>
+        <dataSourceKey>default</dataSourceKey>
+        <paginationType>NO</paginationType>
+        <operationType>QUERY</operationType>
+        <bindKey>permissionIds</bindKey>
+      </property>
+    </component>
+    <connection>
+      <id>866d397c-f7ad-4619-9a98-8b5d382d384e</id>
+      <from>9e838428-4db7-44ee-bc1b-4833934ebccb</from>
+      <to>f7350d59-9b7e-4963-a0fe-cfe0d5ea2ff9</to>
+      <startX>233</startX>
+      <startY>316</startY>
+      <endX>426</endX>
+      <endY>317</endY>
+      <controlX>331</controlX>
+      <controlY>314</controlY>
+      <label/>
+    </connection>
+    <connection>
+      <id>731eee8e-71ab-4fc3-9aaa-9ac8d77b4270</id>
+      <from>f7350d59-9b7e-4963-a0fe-cfe0d5ea2ff9</from>
+      <to>75067b3a-bb3b-4b48-9d59-e10ebbed54d4</to>
+      <startX>516</startX>
+      <startY>317</startY>
+      <endX>696</endX>
+      <endY>319</endY>
+      <controlX>605</controlX>
+      <controlY>318</controlY>
+      <label/>
+    </connection>
+  </flows>
+</biz>
