@@ -3,19 +3,21 @@
   <id>19a1f641-8c18-4dd6-852d-5b7b2b6b1e3f</id>
   <name>用户登陆</name>
   <url>/api/user/loginUser</url>
-  <protocol>application/json</protocol>
+  <protocol>application/x-www-form-urlencoded</protocol>
   <method>POST</method>
   <params>
-    <param>
-      <name>username</name>
-      <type>0</type>
-      <required>0</required>
-    </param>
-    <param>
-      <name>password</name>
-      <type>0</type>
-      <required>0</required>
-    </param>
+    <bodyParams>
+        <bodyParam>
+          <name>username</name>
+          <type>0</type>
+          <required>0</required>
+        </bodyParam>
+        <bodyParam>
+          <name>password</name>
+          <type>0</type>
+          <required>0</required>
+        </bodyParam>
+    </bodyParams>
   </params>
   <results>
     <responseStruct>1</responseStruct>

@@ -3,16 +3,18 @@
   <id>rolec4d7-de47-4160-a1e5-ba2affc20af1</id>
   <name>删除角色</name>
   <url>/api/role/deleteRole</url>
-  <protocol>application/json</protocol>
+  <protocol>application/x-www-form-urlencoded</protocol>
   <method>POST</method>
   <params>
-    <param>
-      <name>roleId</name>
-      <type>1</type>
-      <required>1</required>
-      <defaultValue/>
-      <description/>
-    </param>
+    <bodyParams>
+        <bodyParam>
+          <name>roleId</name>
+          <type>1</type>
+          <required>1</required>
+          <defaultValue/>
+          <description/>
+        </bodyParam>
+    </bodyParams>
   </params>
   <results>
     <responseStruct>1</responseStruct>

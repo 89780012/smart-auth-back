@@ -3,16 +3,18 @@
   <id>permissionc4d7-de47-4160-a1e5-ba2affc20af4</id>
   <name>批量删除权限</name>
   <url>/api/permission/batchDeletePermission</url>
-  <protocol>application/json</protocol>
+  <protocol>application/x-www-form-urlencoded</protocol>
   <method>POST</method>
   <params>
-    <param>
-      <name>permissionIds</name>
-      <type>7</type>
-      <required>1</required>
-      <defaultValue/>
-      <description/>
-    </param>
+    <bodyParams>
+        <bodyParam>
+          <name>permissionIds</name>
+          <type>7</type>
+          <required>1</required>
+          <defaultValue/>
+          <description/>
+        </bodyParam>
+    </bodyParams>
   </params>
   <results>
     <responseStruct>1</responseStruct>

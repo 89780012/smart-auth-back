@@ -3,14 +3,16 @@
   <id>4a65c14a-4176-4c81-8efc-f89b3b6c92c2</id>
   <name>获取用户角色</name>
   <url>/api/role/getUserRole</url>
-  <protocol>application/json</protocol>
+  <protocol>application/x-www-form-urlencoded</protocol>
   <method>POST</method>
   <params>
-    <param>
-      <name>userId</name>
-      <type>1</type>
-      <required>1</required>
-    </param>
+    <bodyParams>
+        <bodyParam>
+          <name>userId</name>
+          <type>1</type>
+          <required>1</required>
+        </bodyParam>
+    </bodyParams>
   </params>
   <results>
     <responseStruct>1</responseStruct>

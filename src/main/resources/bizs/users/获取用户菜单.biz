@@ -3,14 +3,16 @@
   <id>41b816c7-f0e4-4106-8362-fcafc48b22e8</id>
   <name>获取用户菜单</name>
   <url>/api/user/getUserMenu</url>
-  <protocol>application/json</protocol>
+  <protocol>application/x-www-form-urlencoded</protocol>
   <method>POST</method>
   <params>
-    <param>
-      <name>userId</name>
-      <type>1</type>
-      <required>1</required>
-    </param>
+    <bodyParams>
+        <bodyParam>
+          <name>userId</name>
+          <type>1</type>
+          <required>1</required>
+        </bodyParam>
+    </bodyParams>
   </params>
   <results>
     <responseStruct>1</responseStruct>

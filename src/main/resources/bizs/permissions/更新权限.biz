@@ -3,37 +3,39 @@
   <id>permissionc4d7-de47-4160-a1e5-ba2affc20af6</id>
   <name>权限更新</name>
   <url>/api/permission/updatePermission</url>
-  <protocol>application/json</protocol>
+  <protocol>application/x-www-form-urlencoded</protocol>
   <method>POST</method>
   <params>
-    <param>
-      <name>permissionCode</name>
-      <type>0</type>
-      <required>0</required>
-      <defaultValue>10001</defaultValue>
-      <description/>
-    </param>
-    <param>
-      <name>permissionName</name>
-      <type>0</type>
-      <required>0</required>
-      <defaultValue>超级管理员</defaultValue>
-      <description/>
-    </param>
-    <param>
-      <name>description</name>
-      <type>0</type>
-      <required>0</required>
-      <defaultValue>超级管理员</defaultValue>
-      <description/>
-    </param>
-    <param>
-      <name>isActive</name>
-      <type>1</type>
-      <required>0</required>
-      <defaultValue>0</defaultValue>
-      <description/>
-    </param>
+    <bodyParams>
+        <bodyParam>
+          <name>permissionCode</name>
+          <type>0</type>
+          <required>0</required>
+          <defaultValue>10001</defaultValue>
+          <description/>
+        </bodyParam>
+        <bodyParam>
+          <name>permissionName</name>
+          <type>0</type>
+          <required>0</required>
+          <defaultValue>超级管理员</defaultValue>
+          <description/>
+        </bodyParam>
+        <bodyParam>
+          <name>description</name>
+          <type>0</type>
+          <required>0</required>
+          <defaultValue>超级管理员</defaultValue>
+          <description/>
+        </bodyParam>
+        <bodyParam>
+          <name>isActive</name>
+          <type>1</type>
+          <required>0</required>
+          <defaultValue>0</defaultValue>
+          <description/>
+        </bodyParam>
+    </bodyParams>
   </params>
   <results>
     <responseStruct>1</responseStruct>

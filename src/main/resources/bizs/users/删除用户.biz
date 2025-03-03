@@ -3,16 +3,18 @@
   <id>0e7ec4d7-de47-4160-a1e5-ba2affc20af1</id>
   <name>删除用户</name>
   <url>/api/user/deleteUser</url>
-  <protocol>application/json</protocol>
+  <protocol>application/x-www-form-urlencoded</protocol>
   <method>POST</method>
   <params>
-    <param>
-      <name>userId</name>
-      <type>0</type>
-      <required>1</required>
-      <defaultValue/>
-      <description/>
-    </param>
+    <bodyParams>
+        <bodyParam>
+          <name>userId</name>
+          <type>0</type>
+          <required>1</required>
+          <defaultValue/>
+          <description/>
+        </bodyParam>
+    </bodyParams>
   </params>
   <results>
     <responseStruct>1</responseStruct>

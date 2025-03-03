@@ -3,16 +3,16 @@
   <id>aabd8b6b-a24c-4608-bb8b-7fe8324e451a</id>
   <name>异常节点测试</name>
   <url>/api/demo/testAbnormalNode</url>
-  <protocol>application/json</protocol>
+  <protocol>application/x-www-form-urlencoded</protocol>
   <method>GET</method>
   <params>
-    <param>
-      <name>num1</name>
-      <type>0</type>
-      <required>1</required>
-      <defaultValue/>
-      <description/>
-    </param>
+    <queryParams>
+      <queryParam>
+        <name>num1</name>
+        <type>0</type>
+        <required>1</required>
+      </queryParam>
+    </queryParams>
   </params>
   <results>
     <responseStruct>1</responseStruct>

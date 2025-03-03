@@ -3,41 +3,43 @@
   <id>rolec4d7-de47-4160-a1e5-ba2affc20af3</id>
   <name>角色导出</name>
   <url>/api/role/exportRole</url>
-  <protocol>application/json</protocol>
+  <protocol>application/x-www-form-urlencoded</protocol>
   <method>POST</method>
   <params>
-    <param>
-      <name>username</name>
-      <type>0</type>
-      <required>0</required>
-    </param>
-    <param>
-      <name>email</name>
-      <type>0</type>
-      <required>0</required>
-    </param>
-    <param>
-      <name>phone</name>
-      <type>0</type>
-      <required>0</required>
-    </param>
-    <param>
-      <name>wechatId</name>
-      <type>0</type>
-      <required>0</required>
-    </param>
-    <param>
-      <name>startTime</name>
-      <type>0</type>
-      <required>0</required>
-      <defaultValue>2025-01-30 23:44:14</defaultValue>
-    </param>
-    <param>
-      <name>endTime</name>
-      <type>0</type>
-      <required>0</required>
-      <defaultValue>2025-01-31 23:39:18</defaultValue>
-    </param>
+    <bodyParams>
+        <bodyParam>
+          <name>username</name>
+          <type>0</type>
+          <required>0</required>
+        </bodyParam>
+        <bodyParam>
+          <name>email</name>
+          <type>0</type>
+          <required>0</required>
+        </bodyParam>
+        <bodyParam>
+          <name>phone</name>
+          <type>0</type>
+          <required>0</required>
+        </bodyParam>
+        <bodyParam>
+          <name>wechatId</name>
+          <type>0</type>
+          <required>0</required>
+        </bodyParam>
+        <bodyParam>
+          <name>startTime</name>
+          <type>0</type>
+          <required>0</required>
+          <defaultValue>2025-01-30 23:44:14</defaultValue>
+        </bodyParam>
+        <bodyParam>
+          <name>endTime</name>
+          <type>0</type>
+          <required>0</required>
+          <defaultValue>2025-01-31 23:39:18</defaultValue>
+        </bodyParam>
+    </bodyParams>
   </params>
   <results>
     <responseStruct>1</responseStruct>

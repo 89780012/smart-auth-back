@@ -3,35 +3,37 @@
   <id>rolec4d7-de47-4160-a1e5-ba2affc20af6</id>
   <name>用户更新</name>
   <url>/api/role/updateRole</url>
-  <protocol>application/json</protocol>
+  <protocol>application/x-www-form-urlencoded</protocol>
   <method>POST</method>
   <params>
-    <param>
-      <name>roleCode</name>
-      <type>0</type>
-      <required>0</required>
-    </param>
-    <param>
-      <name>roleName</name>
-      <type>0</type>
-      <required>0</required>
-      <defaultValue>0</defaultValue>
-    </param>
-    <param>
-      <name>description</name>
-      <type>0</type>
-      <required>0</required>
-    </param>
-    <param>
-      <name>isActive</name>
-      <type>1</type>
-      <required>0</required>
-    </param>
-    <param>
-      <name>roleId</name>
-      <type>1</type>
-      <required>0</required>
-    </param>
+    <bodyParams>
+        <bodyParam>
+          <name>roleCode</name>
+          <type>0</type>
+          <required>0</required>
+        </bodyParam>
+        <bodyParam>
+          <name>roleName</name>
+          <type>0</type>
+          <required>0</required>
+          <defaultValue>0</defaultValue>
+        </bodyParam>
+        <bodyParam>
+          <name>description</name>
+          <type>0</type>
+          <required>0</required>
+        </bodyParam>
+        <bodyParam>
+          <name>isActive</name>
+          <type>1</type>
+          <required>0</required>
+        </bodyParam>
+        <bodyParam>
+          <name>roleId</name>
+          <type>1</type>
+          <required>0</required>
+        </bodyParam>
+    </bodyParams>
   </params>
   <results>
     <responseStruct>1</responseStruct>

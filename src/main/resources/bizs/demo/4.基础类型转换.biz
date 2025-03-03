@@ -3,14 +3,16 @@
   <id>5f272e07-43de-4e0c-9849-6e28c572c78f</id>
   <name>基础类型转换</name>
   <url>/api/demo/convertPrimitiveTypes</url>
-  <protocol>application/json</protocol>
+  <protocol>application/x-www-form-urlencoded</protocol>
   <method>GET</method>
   <params>
-    <param>
-      <name>str1</name>
-      <type>0</type>
-      <required>1</required>
-    </param>
+    <queryParams>
+      <queryParam>
+        <name>str1</name>
+        <type>0</type>
+        <required>1</required>
+      </queryParam>
+    </queryParams>
   </params>
   <results>
     <responseStruct>1</responseStruct>

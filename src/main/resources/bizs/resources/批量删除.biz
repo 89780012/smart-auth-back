@@ -3,16 +3,16 @@
   <id>resourcesd7-de47-4160-a1e5-ba2affdelete</id>
   <name>批量删除用户</name>
   <url>/api/resources/batchDeleteResources</url>
-  <protocol>application/json</protocol>
+  <protocol>application/x-www-form-urlencoded</protocol>
   <method>POST</method>
   <params>
-    <param>
-      <name>resourceIds</name>
-      <type>7</type>
-      <required>1</required>
-      <defaultValue/>
-      <description/>
-    </param>
+    <bodyParams>
+      <bodyParam>
+        <name>resourceIds</name>
+        <type>7</type>
+        <required>1</required>
+      </bodyParam>
+    </bodyParams>
   </params>
   <results>
     <responseStruct>1</responseStruct>

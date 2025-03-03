@@ -3,51 +3,53 @@
   <id>0e7ec4d7-de47-4160-a1e5-ba2affc20af6</id>
   <name>用户更新</name>
   <url>/api/user/updateUser</url>
-  <protocol>application/json</protocol>
+  <protocol>application/x-www-form-urlencoded</protocol>
   <method>POST</method>
   <params>
-    <param>
-      <name>userId</name>
-      <type>1</type>
-      <required>1</required>
-      <defaultValue>1</defaultValue>
-      <description/>
-    </param>
-    <param>
-      <name>username</name>
-      <type>0</type>
-      <required>0</required>
-      <defaultValue>admin1212</defaultValue>
-      <description/>
-    </param>
-    <param>
-      <name>email</name>
-      <type>0</type>
-      <required>0</required>
-      <defaultValue>a1212d@qq.com</defaultValue>
-      <description/>
-    </param>
-    <param>
-      <name>phone</name>
-      <type>0</type>
-      <required>0</required>
-      <defaultValue>15966639123</defaultValue>
-      <description/>
-    </param>
-    <param>
-      <name>profile</name>
-      <type>0</type>
-      <required>0</required>
-      <defaultValue>http://localhost:8080/files/a2797474-61c3-41d6-a3ac-0bae7bb547c4.png</defaultValue>
-      <description/>
-    </param>
-    <param>
-      <name>isActive</name>
-      <type>1</type>
-      <required>0</required>
-      <defaultValue>0</defaultValue>
-      <description/>
-    </param>
+    <bodyParams>
+        <bodyParam>
+          <name>userId</name>
+          <type>1</type>
+          <required>1</required>
+          <defaultValue>1</defaultValue>
+          <description/>
+        </bodyParam>
+        <bodyParam>
+          <name>username</name>
+          <type>0</type>
+          <required>0</required>
+          <defaultValue>admin1212</defaultValue>
+          <description/>
+        </bodyParam>
+        <bodyParam>
+          <name>email</name>
+          <type>0</type>
+          <required>0</required>
+          <defaultValue>a1212d@qq.com</defaultValue>
+          <description/>
+        </bodyParam>
+        <bodyParam>
+          <name>phone</name>
+          <type>0</type>
+          <required>0</required>
+          <defaultValue>15966639123</defaultValue>
+          <description/>
+        </bodyParam>
+        <bodyParam>
+          <name>profile</name>
+          <type>0</type>
+          <required>0</required>
+          <defaultValue>http://localhost:8080/files/a2797474-61c3-41d6-a3ac-0bae7bb547c4.png</defaultValue>
+          <description/>
+        </bodyParam>
+        <bodyParam>
+          <name>isActive</name>
+          <type>1</type>
+          <required>0</required>
+          <defaultValue>0</defaultValue>
+          <description/>
+        </bodyParam>
+    </bodyParams>
   </params>
   <results>
     <responseStruct>1</responseStruct>

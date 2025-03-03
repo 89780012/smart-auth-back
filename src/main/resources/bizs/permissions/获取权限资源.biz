@@ -3,16 +3,18 @@
   <id>3265e906-9b3d-457b-bda3-c784088efe5a</id>
   <name>获取权限资源</name>
   <url>/api/permissions/resources</url>
-  <protocol>application/json</protocol>
+  <protocol>application/x-www-form-urlencoded</protocol>
   <method>POST</method>
   <params>
-    <param>
-      <name>permissionId</name>
-      <type>1</type>
-      <required>1</required>
-      <defaultValue/>
-      <description/>
-    </param>
+    <bodyParams>
+        <bodyParam>
+          <name>permissionId</name>
+          <type>1</type>
+          <required>1</required>
+          <defaultValue/>
+          <description/>
+        </bodyParam>
+    </bodyParams>
   </params>
   <results>
     <responseStruct>1</responseStruct>

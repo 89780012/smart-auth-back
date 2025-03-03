@@ -3,19 +3,21 @@
   <id>981a5cde-59a9-4fc3-9a7a-111bb9db1a9d</id>
   <name>绑定权限资源</name>
   <url>/api/permissions/bindPermissionResource</url>
-  <protocol>application/json</protocol>
+  <protocol>application/x-www-form-urlencoded</protocol>
   <method>POST</method>
   <params>
-    <param>
-      <name>permissionId</name>
-      <type>1</type>
-      <required>1</required>
-    </param>
-    <param>
-      <name>resourceIds</name>
-      <type>7</type>
-      <required>1</required>
-    </param>
+    <bodyParams>
+        <bodyParam>
+          <name>permissionId</name>
+          <type>1</type>
+          <required>1</required>
+        </bodyParam>
+        <bodyParam>
+          <name>resourceIds</name>
+          <type>7</type>
+          <required>1</required>
+        </bodyParam>
+    </bodyParams>
   </params>
   <results>
     <responseStruct>1</responseStruct>

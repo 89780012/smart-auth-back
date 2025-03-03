@@ -3,19 +3,21 @@
   <id>fe0bde4f-645a-41c3-927f-1c1d314885ff</id>
   <name>用户绑定角色</name>
   <url>/api/role/bindUserRole</url>
-  <protocol>application/json</protocol>
+  <protocol>application/x-www-form-urlencoded</protocol>
   <method>POST</method>
   <params>
-    <param>
-      <name>userId</name>
-      <type>1</type>
-      <required>0</required>
-    </param>
-    <param>
-      <name>roleIds</name>
-      <type>7</type>
-      <required>0</required>
-    </param>
+    <bodyParams>
+      <bodyParam>
+        <name>userId</name>
+        <type>0</type>
+        <required>0</required>
+      </bodyParam>
+      <bodyParam>
+        <name>roleIds</name>
+        <type>7</type>
+        <required>0</required>
+      </bodyParam>
+    </bodyParams>
   </params>
   <results>
     <responseStruct>1</responseStruct>

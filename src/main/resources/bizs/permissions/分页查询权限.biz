@@ -3,58 +3,60 @@
   <id>permissionc4d7-de47-4160-a1e5-ba2affc20af7</id>
   <name>分页查询权限</name>
   <url>/api/permission/pageList</url>
-  <protocol>application/json</protocol>
+  <protocol>application/x-www-form-urlencoded</protocol>
   <method>POST</method>
   <params>
-    <param>
-      <name>permissionCode</name>
-      <type>0</type>
-      <required>0</required>
-      <defaultValue>1</defaultValue>
-      <description/>
-    </param>
-    <param>
-      <name>permissionName</name>
-      <type>0</type>
-      <required>0</required>
-      <defaultValue>1</defaultValue>
-      <description/>
-    </param>
-    <param>
-      <name>isActive</name>
-      <type>1</type>
-      <required>0</required>
-      <defaultValue>1</defaultValue>
-      <description/>
-    </param>
-    <param>
-      <name>startTime</name>
-      <type>0</type>
-      <required>0</required>
-      <defaultValue>2025-01-09 00:00:00</defaultValue>
-      <description/>
-    </param>
-    <param>
-      <name>endTime</name>
-      <type>0</type>
-      <required>0</required>
-      <defaultValue>2025-01-17 00:00:00</defaultValue>
-      <description/>
-    </param>
-    <param>
-      <name>orderBy</name>
-      <type>0</type>
-      <required>0</required>
-      <defaultValue/>
-      <description/>
-    </param>
-    <param>
-      <name>orderType</name>
-      <type>0</type>
-      <required>0</required>
-      <defaultValue/>
-      <description/>
-    </param>
+    <bodyParams>
+      <bodyParam>
+        <name>permissionCode</name>
+        <type>0</type>
+        <required>0</required>
+        <defaultValue>1</defaultValue>
+        <description/>
+      </bodyParam>
+      <bodyParam>
+        <name>permissionName</name>
+        <type>0</type>
+        <required>0</required>
+        <defaultValue>1</defaultValue>
+        <description/>
+      </bodyParam>
+      <bodyParam>
+        <name>isActive</name>
+        <type>1</type>
+        <required>0</required>
+        <defaultValue>1</defaultValue>
+        <description/>
+      </bodyParam>
+      <bodyParam>
+        <name>startTime</name>
+        <type>0</type>
+        <required>0</required>
+        <defaultValue>2025-01-09 00:00:00</defaultValue>
+        <description/>
+      </bodyParam>
+      <bodyParam>
+        <name>endTime</name>
+        <type>0</type>
+        <required>0</required>
+        <defaultValue>2025-01-17 00:00:00</defaultValue>
+        <description/>
+      </bodyParam>
+      <bodyParam>
+        <name>orderBy</name>
+        <type>0</type>
+        <required>0</required>
+        <defaultValue/>
+        <description/>
+      </bodyParam>
+      <bodyParam>
+        <name>orderType</name>
+        <type>0</type>
+        <required>0</required>
+        <defaultValue/>
+        <description/>
+      </bodyParam>
+    </bodyParams>
   </params>
   <results>
     <responseStruct>1</responseStruct>

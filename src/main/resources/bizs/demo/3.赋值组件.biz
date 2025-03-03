@@ -3,16 +3,16 @@
   <id>85677b6f-872b-49ea-88d4-21531696db6b</id>
   <name>赋值组件测试</name>
   <url>/api/demo/setComponentTest</url>
-  <protocol>application/json</protocol>
+  <protocol>application/x-www-form-urlencoded</protocol>
   <method>GET</method>
   <params>
-    <param>
-      <name>str1</name>
-      <type>0</type>
-      <required>1</required>
-      <defaultValue/>
-      <description/>
-    </param>
+    <queryParams>
+      <queryParam>
+        <name>str1</name>
+        <type>0</type>
+        <required>1</required>
+      </queryParam>
+    </queryParams>
   </params>
   <results>
     <responseStruct>1</responseStruct>
@@ -71,12 +71,14 @@
         <operationType>QUERY</operationType>
         <params>
           <param>
+            <seq/>
             <dataType>0</dataType>
             <val>str2</val>
             <val2>sssss</val2>
             <valueCategory>1</valueCategory>
           </param>
           <param>
+            <seq/>
             <dataType>0</dataType>
             <val>str3</val>
             <val2>str1</val2>
